@@ -15,7 +15,7 @@ import CurrencyAvatar from "../components/CurrencyAvatar";
 import RateTile from "../components/RateTile";
 
 const RatesScreen = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState('1');
   const { data } = useSWR("/api/rates", fetchRates);
 
   return (
@@ -34,9 +34,9 @@ const RatesScreen = () => {
             />
           </View>
         </View>
-        {!data && <ActivityIndicator />}
+        {!data && <ActivityIndicator style={styles.ActivityIndicator} />}
         {data?.rates.map((el) => (
-          <RateTile mainCurrencyValue={value} {...el} />
+          <RateTile key={el.id} mainCurrencyValue={value} {...el} />
         ))}
       </ScrollView>
     </SafeAreaView>
@@ -85,5 +85,8 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 16,
     fontWeight: "500",
+  },
+  ActivityIndicator: {
+    marginTop: 15,
   },
 });

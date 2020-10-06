@@ -2,13 +2,13 @@ import React, { useMemo } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import CurrencyAvatar from "./CurrencyAvatar";
 
-const RateTile = ({ to, to_long, value, id, mainCurrencyValue }) => {
+const RateTile = ({ to, to_long, value, mainCurrencyValue }) => {
   const finalValue = useMemo(() => mainCurrencyValue * value, [
     value,
     mainCurrencyValue,
   ]);
   return (
-    <View style={styles.container} key={id}>
+    <View style={styles.container}>
       <CurrencyAvatar currency={to} />
       <View style={styles.valueContainer}>
         <Text numberOfLines={1} style={styles.longText}>
